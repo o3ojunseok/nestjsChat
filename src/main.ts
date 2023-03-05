@@ -7,8 +7,11 @@ async function bootstrap() {
   const redisIoAdapter = new RedisIoAdapter(app);
   await redisIoAdapter.connectToRedis();
 
+  app.enableCors();
   app.useWebSocketAdapter(redisIoAdapter);
 
   await app.listen(3000);
+
+  
 }
 bootstrap();
